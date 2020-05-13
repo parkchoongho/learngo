@@ -5,24 +5,16 @@ import (
 	"strings"
 )
 
-// 들어오는 argument의 값이 정해져 있지 않은 경우 이렇게 작성할 수 있습니다.
-func repeatMe(words ...string) {
-	fmt.Println(words)
-}
-
-// GO는 특이하게 함수가 동시에 여러개의 값을 반환할 수 있습니다.
-func lenAndUpprt(name string) (int, string) {
-	return len(name), strings.ToUpper(name)
-}
-
-// GO는 argument와 return 값의 type을 함수에 명시해야합니다.
-func multiply(a, b int) int {
-	return a * b
+// defer: defer는 함수가 끝난 후(실행되고 난 후)에 추가적으로 무엇인가 동작할 수 있게 하는 기능입니다.
+// naked return: return할 변수를 꼭 명시하지 않아도 되는 것을 의미합니다. 이미 어떤 값을 리턴할지를 명시해 두었기 깨문에 length := len(name)으로 코드를 작성하지 않습니다.
+func lenAndUpper(name string) (length int, uppercase string) {
+	defer fmt.Println("I'm done")
+	length = len(name)
+	uppercase = strings.ToUpper(name)
+	return
 }
 
 func main() {
-	fmt.Println(multiply(2, 2))
-	totalLength, upperName := lenAndUpprt("dd")
+	totalLength, upperName := lenAndUpper("dd")
 	fmt.Println(totalLength, upperName)
-	repeatMe("DD", "Hi")
 }
