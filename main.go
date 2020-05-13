@@ -1,20 +1,25 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
-// defer: defer는 함수가 끝난 후(실행되고 난 후)에 추가적으로 무엇인가 동작할 수 있게 하는 기능입니다.
-// naked return: return할 변수를 꼭 명시하지 않아도 되는 것을 의미합니다. 이미 어떤 값을 리턴할지를 명시해 두었기 깨문에 length := len(name)으로 코드를 작성하지 않습니다.
-func lenAndUpper(name string) (length int, uppercase string) {
-	defer fmt.Println("I'm done")
-	length = len(name)
-	uppercase = strings.ToUpper(name)
-	return
+// loop: go에서는 반복문으로 for 문 만을 사용합니다.
+func superAdd(numbers ...int) int {
+	for index, number := range numbers {
+		fmt.Println(index, number)
+	}
+	for i := 0; i < len(numbers); i++ {
+		fmt.Println(numbers[i])
+	}
+	total := 0
+
+	for _, number := range numbers {
+		total += number
+	}
+
+	return total
 }
 
 func main() {
-	totalLength, upperName := lenAndUpper("dd")
-	fmt.Println(totalLength, upperName)
+	result := superAdd(1, 2, 3, 4, 5, 6)
+	fmt.Println(result)
 }
