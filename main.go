@@ -2,24 +2,15 @@ package main
 
 import "fmt"
 
-// loop: go에서는 반복문으로 for 문 만을 사용합니다.
-func superAdd(numbers ...int) int {
-	for index, number := range numbers {
-		fmt.Println(index, number)
+// variable expression: 조건을 체크하기전에 if 조건문 안에 variable을 생성할 수 있는 문법. 외부에서 변수를 사용할 수도 있지만
+// 이렇게 코드를 작성하면 다른 개발자가 와서 봤을때 if else문에서만 사용하기위해 변수를 생성했음을 알 수 있다.
+func canIDrink(age int) bool {
+	if koreanAge := age + 2; koreanAge < 20 {
+		return false
 	}
-	for i := 0; i < len(numbers); i++ {
-		fmt.Println(numbers[i])
-	}
-	total := 0
-
-	for _, number := range numbers {
-		total += number
-	}
-
-	return total
+	return true
 }
 
 func main() {
-	result := superAdd(1, 2, 3, 4, 5, 6)
-	fmt.Println(result)
+	fmt.Println(canIDrink(16))
 }
