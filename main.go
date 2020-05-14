@@ -2,15 +2,17 @@ package main
 
 import "fmt"
 
-// variable expression: 조건을 체크하기전에 if 조건문 안에 variable을 생성할 수 있는 문법. 외부에서 변수를 사용할 수도 있지만
-// 이렇게 코드를 작성하면 다른 개발자가 와서 봤을때 if else문에서만 사용하기위해 변수를 생성했음을 알 수 있다.
+// 일반적인 switch문과 크게 다르지 않습니다. if문과 마찬가지로 variavle expression을 사용할 수 있습니다.
 func canIDrink(age int) bool {
-	if koreanAge := age + 2; koreanAge < 20 {
+	switch koreanAge := age + 2; koreanAge >= 20 {
+	case true:
+		return true
+	case false:
 		return false
 	}
-	return true
+	return false
 }
 
 func main() {
-	fmt.Println(canIDrink(16))
+	fmt.Println(canIDrink(17))
 }
